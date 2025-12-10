@@ -1,9 +1,62 @@
 # About
-This is the demo site for [Fuwari](https://github.com/saicaca/fuwari).
 
-::github{repo="saicaca/fuwari"}
 
-> ### Sources of images used in this site
-> - [Unsplash](https://unsplash.com/)
-> - [星と少女](https://www.pixiv.net/artworks/108916539) by [Stella](https://www.pixiv.net/users/93273965)
-> - [Rabbit - v1.4 Showcase](https://civitai.com/posts/586908) by [Rabbit_YourMajesty](https://civitai.com/user/Rabbit_YourMajesty)
+# 关于本站
+
+&gt; **"在数字世界里，留下一些有温度的文字。"**
+
+## 为什么建站？
+
+创建这个站的初衷，是希望能有一个**积累知识、记录兴趣**的地方。分享不仅让内容沉淀，也能帮助更多人解决问题。
+
+**分享这件事我从很早就开始了：**
+- 起初做的微信公众号
+- 现在做的个人网站
+
+我比较喜欢研究数码和软件，探究互联网上的事物如何被创造和发展。网络给我带来了开阔的眼界，我也想力所能及地分享一些生活的碎片知识。
+
+与大多数垂直类的技术博客不同，这里的种类会非常的**繁杂**，有：
+- 技能的教程干货
+- 生活上的吐槽和妙招
+- 话题上的思考和想法
+
+一般我研究什么、发现了什么都会记录在这里。这是创造这个小站的本意，也是我分享生活的方式。
+
+---
+
+## 四年之约
+
+**始终如一，不离不弃**
+
+在这四年的时间里，我将会做好每一名学生都需要做的事：考上理想的学校，践行自己的座右铭，实现伟大抱负。相信不久的将来，轻风梦旅将会作为我人生中的一个重要部分。
+
+*（2025/7/1 — 2029/7/1）*
+
+---
+
+## 致谢
+
+### 赞赏支持
+
+&lt;div style="background: #f3f4f6; padding: 20px; border-radius: 12px; border-left: 4px solid #f59e0b; margin: 20px 0;"&gt;
+
+**共 1 人**
+
+&gt; **B612号小行星**  
+&gt; 0.52 元  
+&gt; 2025-08-29
+
+&lt;/div&gt;
+
+---
+
+## 联系方式
+
+- **GitHub**: [github.com/yourname](https://github.com/aadddg)
+
+本站由开源项目 [Fuwari](https://github.com/saicaca/fuwari).构建，感谢原作者
+
+::github{repo="aadddg/blogs"}
+---
+
+&gt; *有幸能和你相遇在这里，相信我们能共同留下一段美好记忆。*
