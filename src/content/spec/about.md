@@ -1,5 +1,8 @@
-# About
-
+---
+title: 关于本站
+published: 2025-12-11
+description: 我的个人介绍
+---
 
 # 关于本站
 
@@ -38,25 +41,22 @@
 
 ### 赞赏支持
 
-&lt;div style="background: #f3f4f6; padding: 20px; border-radius: 12px; border-left: 4px solid #f59e0b; margin: 20px 0;"&gt;
-
-**共 1 人**
-
-&gt; **B612号小行星**  
-&gt; 0.52 元  
-&gt; 2025-08-29
-
-&lt;/div&gt;
+&gt; **👍 共 1 位赞赏者**
+&gt; 
+&gt; **🌟 B612号小行星**  
+&gt; **💰 0.52 元**  
+&gt; 📅 2025-08-29
 
 ---
 
 ## 联系方式
 
-- **GitHub**: [github.com/yourname](https://github.com/aadddg)
+- **GitHub**: [github.com/aadddg](https://github.com/aadddg)
 
-本站由开源项目 [Fuwari](https://github.com/saicaca/fuwari).构建，感谢原作者
-
+本站由开源项目 [Fuwari](https://github.com/saicaca/fuwari) 构建，感谢原作者
 ::github{repo="aadddg/blogs"}
+
+
 ---
 
 &gt; *有幸能和你相遇在这里，相信我们能共同留下一段美好记忆。*

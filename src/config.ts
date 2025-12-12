@@ -17,8 +17,8 @@ export const siteConfig: SiteConfig = {
 	},
 	banner: {
 		enable: true,
-		src: "assets/images/demo-banner.png",  // 默认横幅
-		position: "center",
+		src: "assets/images/bg.jpg",  // 默认横幅
+		position: "top",
 		credit: {
 			enable: false,
 			text: "",
