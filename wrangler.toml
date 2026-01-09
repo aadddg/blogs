@@ -1,0 +1,6 @@
+name = "blogs"  # 必须与 Cloudflare Pages 项目名称一致
+
+# 对于 Pages 项目，还需要指定
+pages_build_output_dir = "dist"
+
+compatibility_date = "2025-01-09"
