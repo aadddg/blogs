@@ -4,6 +4,7 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 
 import ConfigCarrier from "@components/ConfigCarrier.astro";
+import MusicPlayer from "@components/MusicPlayer.svelte";
 import { profileConfig, siteConfig } from "@/config";
 import {
 	AUTO_MODE,
@@ -135,6 +136,7 @@ const siteLang = lang.replace("_", "-");
 		</div>
 		<ConfigCarrier></ConfigCarrier>
 		<slot />
+		<MusicPlayer client:load />
 
 		<!-- increase the page height during page transition to prevent the scrolling animation from jumping -->
 		<div id="page-height-extend" class="hidden h-[300vh]"></div>
