@@ -14,7 +14,7 @@ const playlist: Song[] = [
 		title: "Comfort Chain",
 		artist: "Instupendo",
 		cover: "https://img2.kuwo.cn/star/albumcover/120/7/62/4034894558.jpg",
-		src: "https://lx-sycdn.kuwo.cn/cc47f6471a6dcde4920f4ab2f871a38a/69d350c8/resource/a2/25/91/4285166257.aac",
+		src: "https://mp3.itingwa.com/2023-10/15/20231015070451-ODUzNzQ0.mp3",
 	},
 	{
 		title: "Electronic Dreams",
