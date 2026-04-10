@@ -9,25 +9,43 @@ interface Song {
 	src: string;
 }
 
-const playlist: Song[] = [
-	{
-		title: "Comfort Chain",
-		artist: "Instupendo",
-		cover: "https://img2.kuwo.cn/star/albumcover/120/7/62/4034894558.jpg",
-		src: "https://mp3.itingwa.com/2023-10/15/20231015070451-ODUzNzQ0.mp3",
-	},
-	{
-		title: "Electronic Dreams",
-		artist: "Synthwave",
-		cover: "https://picsum.photos/seed/song2/200/200",
-		src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+// 歌单 ID，可自行修改
+const PLAYLIST_ID = 8045756457;
+
+// 默认封面 - 使用纯 CSS 渐变，不依赖外部资源
+const DEFAULT_COVER = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23444'/%3E%3Cstop offset='100%25' style='stop-color:%23222'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' fill='url(%23g)'/%3E%3Ccircle cx='50' cy='50' r='18' fill='none' stroke='%23666' stroke-width='2'/%3E%3Ccircle cx='50' cy='50' r='8' fill='%23666'/%3E%3C/svg%3E";
+
+let playlist: Song[] = $state([]);
+let isLoading = $state(true);
+
+// 图片加载状态管理
+let loadedImages = $state<Set<number>>(new Set());
+let failedImages = $state<Set<number>>(new Set());
+
+async function fetchPlaylist() {
+	try {
+		const response = await fetch(`https://api.injahow.cn/meting/?type=playlist&id=${PLAYLIST_ID}`);
+		const data = await response.json();
+		
+		playlist = data.map((item: any) => ({
+			title: item.name,
+			artist: item.artist,
+			cover: item.pic,
+			src: item.url,
+		}));
+		
+		isLoading = false;
+	} catch (error) {
+		console.error('Failed to fetch playlist:', error);
+		playlist = [];
+		isLoading = false;
 	}
-];
+}
 
 type ViewMode = 'main' | 'playlist' | 'volume';
 
-let isExpanded = $state(true); // 默认展开
-let isPlaying = $state(false); // 播放状态由音频事件控制
+let isExpanded = $state(true);
+let isPlaying = $state(false);
 let currentIndex = $state(0);
 let currentTime = $state(0);
 let duration = $state(0);
@@ -37,7 +55,7 @@ let isHovering = $state(false);
 let viewMode: ViewMode = $state('main');
 
 let collapseTimer: ReturnType<typeof setTimeout> | null = null;
-const COLLAPSE_DELAY = 8000; // 失去焦点8秒后自动收缩
+const COLLAPSE_DELAY = 8000;
 
 let currentSong = $derived(playlist[currentIndex]);
 let audioElement: HTMLAudioElement | null = $state(null);
@@ -78,7 +96,7 @@ function playSong(index: number) {
 }
 
 function loadAndPlay() {
-	if (!audioElement) return;
+	if (!audioElement || !currentSong) return;
 	audioElement.src = currentSong.src;
 	audioElement.load();
 	if (isPlaying) {
@@ -87,12 +105,14 @@ function loadAndPlay() {
 }
 
 function playPrevious() {
+	if (playlist.length === 0) return;
 	currentIndex = (currentIndex - 1 + playlist.length) % playlist.length;
 	loadAndPlay();
 	resetCollapseTimer();
 }
 
 function playNext() {
+	if (playlist.length === 0) return;
 	currentIndex = (currentIndex + 1) % playlist.length;
 	loadAndPlay();
 	resetCollapseTimer();
@@ -165,31 +185,32 @@ function handleMouseLeave() {
 }
 
 onMount(() => {
-	audioElement = new Audio();
-	audioElement.volume = volume;
-	audioElement.src = currentSong.src;
+	fetchPlaylist().then(() => {
+		if (playlist.length > 0) {
+			audioElement = new Audio();
+			audioElement.volume = volume;
+			audioElement.src = currentSong.src;
 
-	audioElement.addEventListener("timeupdate", () => {
-		currentTime = audioElement!.currentTime;
-	});
-	audioElement.addEventListener("loadedmetadata", () => {
-		duration = audioElement!.duration;
-	});
-	audioElement.addEventListener("ended", playNext);
-	audioElement.addEventListener("play", () => isPlaying = true);
-	audioElement.addEventListener("pause", () => isPlaying = false);
-
-	// 页面加载后延迟一点再自动播放，确保音频已准备好
-	setTimeout(() => {
-		if (audioElement) {
-			audioElement.play().catch(() => {
-				// 自动播放被浏览器阻止，保持展开状态等待用户交互
-				console.log('自动播放被阻止，请点击播放按钮');
+			audioElement.addEventListener("timeupdate", () => {
+				currentTime = audioElement!.currentTime;
 			});
+			audioElement.addEventListener("loadedmetadata", () => {
+				duration = audioElement!.duration;
+			});
+			audioElement.addEventListener("ended", playNext);
+			audioElement.addEventListener("play", () => isPlaying = true);
+			audioElement.addEventListener("pause", () => isPlaying = false);
+
+			setTimeout(() => {
+				if (audioElement) {
+					audioElement.play().catch(() => {
+						console.log('自动播放被阻止，请点击播放按钮');
+					});
+				}
+				resetCollapseTimer();
+			}, 500);
 		}
-		// 启动自动收缩计时器
-		resetCollapseTimer();
-	}, 500);
+	});
 });
 
 onDestroy(() => {
@@ -199,6 +220,24 @@ onDestroy(() => {
 		audioElement = null;
 	}
 });
+
+// 处理图片加载成功
+function handleImageLoad(index: number) {
+	loadedImages = new Set([...loadedImages, index]);
+}
+
+// 处理图片加载失败
+function handleImageError(index: number) {
+	failedImages = new Set([...failedImages, index]);
+}
+
+// 获取图片URL，失败时返回默认封面
+function getCoverUrl(index: number, originalUrl: string): string {
+	if (failedImages.has(index)) {
+		return DEFAULT_COVER;
+	}
+	return originalUrl;
+}
 </script>
 
 <div
@@ -214,7 +253,11 @@ onDestroy(() => {
 		<div class="player-bg"></div>
 
 		<div class="player-content relative z-10">
-			{#if !isExpanded}
+			{#if isLoading}
+				<div class="circle-state flex items-center justify-center w-full h-full">
+					<div class="animate-spin rounded-full h-5 w-5 border-2 border-[var(--btn-content)] border-t-transparent"></div>
+				</div>
+			{:else if !isExpanded}
 				<div class="circle-state flex items-center justify-center w-full h-full">
 					{#if isPlaying}
 						<span class="absolute inset-0 rounded-full bg-[var(--primary)] opacity-20 animate-ping"></span>
@@ -239,16 +282,19 @@ onDestroy(() => {
 			{:else}
 				<div class="square-state w-full h-full flex flex-col">
 					<!-- Main View -->
-					{#if viewMode === 'main'}
+					{#if viewMode === 'main' && currentSong}
 						<div class="flex flex-col">
 							<!-- 歌曲信息 -->
 							<div class="flex items-center gap-3 mb-3">
-								<div class="relative w-14 h-14 rounded-lg overflow-hidden flex-shrink-0">
+								<div class="relative w-14 h-14 rounded-lg overflow-hidden flex-shrink-0 bg-black/20">
 									<img
-										src={currentSong.cover}
+										src={getCoverUrl(currentIndex, currentSong.cover)}
 										alt={currentSong.title}
 										class="w-full h-full object-cover"
 										class:animate-spin-slow={isPlaying}
+										onload={() => handleImageLoad(currentIndex)}
+										onerror={() => handleImageError(currentIndex)}
+										loading="lazy"
 									/>
 									{#if isPlaying}
 										<div class="absolute inset-0 flex items-center justify-center bg-black/20">
@@ -426,8 +472,15 @@ onDestroy(() => {
 										class:bg-[var(--btn-regular-bg)]={index === currentIndex}
 										onclick={(e) => { e.stopPropagation(); playSong(index); }}
 									>
-										<div class="relative w-10 h-10 rounded overflow-hidden flex-shrink-0">
-											<img src={song.cover} alt={song.title} class="w-full h-full object-cover" />
+										<div class="relative w-10 h-10 rounded overflow-hidden flex-shrink-0 bg-black/20">
+											<img
+												src={getCoverUrl(index, song.cover)}
+												alt={song.title}
+												class="w-full h-full object-cover"
+												onload={() => handleImageLoad(index)}
+												onerror={() => handleImageError(index)}
+												loading="lazy"
+											/>
 											{#if index === currentIndex}
 												<div class="absolute inset-0 flex items-center justify-center bg-black/40">
 													{#if isPlaying}
