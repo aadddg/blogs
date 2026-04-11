@@ -20,6 +20,7 @@ interface Props {
 	image: string;
 	description: string;
 	draft: boolean;
+	pinned?: boolean;
 	style: string;
 }
 const {
@@ -32,6 +33,7 @@ const {
 	category,
 	image,
 	description,
+	pinned = false,
 	style,
 } = Astro.props;
 const className = Astro.props.class;
@@ -45,6 +47,14 @@ const { remarkPluginFrontmatter } = await entry.render();
 
 <div class:list={["card-base flex flex-col-reverse md:flex-col w-full rounded-[var(--radius-large)] overflow-hidden relative", className]} style={style}>
     <div class:list={["pl-6 md:pl-9 pr-6 md:pr-2 pt-6 md:pt-7 pb-6 relative", {"w-full md:w-[calc(100%_-_52px_-_12px)]": !hasCover, "w-full md:w-[calc(100%_-_var(--coverWidth)_-_12px)]": hasCover}]}>
+        <!-- 置顶标记 -->
+        {pinned && (
+            <div class="absolute top-4 right-4 md:top-5 md:right-auto md:left-[18px] flex items-center gap-1 text-[var(--primary)] text-xs font-medium">
+                <Icon name="material-symbols:push-pin" class="text-base" />
+                <span class="hidden md:inline">{i18n(I18nKey.pinned)}</span>
+            </div>
+        )}
+        
         <a href={url}
            class="transition group w-full block font-bold mb-3 text-3xl text-90
         hover:text-[var(--primary)] dark:hover:text-[var(--primary)]

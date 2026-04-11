@@ -7,6 +7,7 @@ tags: ['HelloWorld']
 category: '杂谈'
 draft: false 
 lang: 'zh_CN'
+pinned: true
 ---
 
 ## 你好，世界。

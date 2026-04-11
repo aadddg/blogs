@@ -36,6 +36,7 @@ export const navBarConfig: NavBarConfig = {
 	links: [
 		LinkPreset.Home, // 首页
 		LinkPreset.Archive, // 归档
+		LinkPreset.Changelog, // 更新日志
 		LinkPreset.About, // 关于
 		{
 			name: "GitHub",
