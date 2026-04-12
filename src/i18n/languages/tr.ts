@@ -7,6 +7,7 @@ export const tr: Translation = {
 	[Key.archive]: "Arşiv",
 	[Key.search]: "Ara",
 	[Key.changelog]: "Değişiklik Günlüğü",
+	[Key.friends]: "Arkadaşlar",
 
 	[Key.tags]: "Taglar",
 	[Key.categories]: "Katagoriler",
@@ -17,6 +18,7 @@ export const tr: Translation = {
 	[Key.untitled]: "Başlıksız",
 	[Key.uncategorized]: "Katagorisiz",
 	[Key.noTags]: "Tag Bulunamadı",
+	[Key.noFriends]: "Arkadaş Yok",
 
 	[Key.wordCount]: "kelime",
 	[Key.wordsCount]: "kelime",

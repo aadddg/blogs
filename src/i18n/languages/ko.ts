@@ -7,6 +7,7 @@ export const ko: Translation = {
 	[Key.archive]: "아카이브",
 	[Key.search]: "검색",
 	[Key.changelog]: "변경 로그",
+	[Key.friends]: "친구 링크",
 
 	[Key.tags]: "태그",
 	[Key.categories]: "카테고리",
@@ -17,6 +18,7 @@ export const ko: Translation = {
 	[Key.untitled]: "제목 없음",
 	[Key.uncategorized]: "분류되지 않음",
 	[Key.noTags]: "태그 없음",
+	[Key.noFriends]: "친구 링크 없음",
 
 	[Key.wordCount]: "단어",
 	[Key.wordsCount]: "단어",

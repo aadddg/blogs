@@ -7,6 +7,7 @@ export const zh_TW: Translation = {
 	[Key.archive]: "彙整",
 	[Key.search]: "搜尋",
 	[Key.changelog]: "更新日誌",
+	[Key.friends]: "友鏈",
 
 	[Key.tags]: "標籤",
 	[Key.categories]: "分類",
@@ -17,6 +18,7 @@ export const zh_TW: Translation = {
 	[Key.untitled]: "無標題",
 	[Key.uncategorized]: "未分類",
 	[Key.noTags]: "無標籤",
+	[Key.noFriends]: "暫無友鏈",
 
 	[Key.wordCount]: "字",
 	[Key.wordsCount]: "字",

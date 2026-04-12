@@ -4,6 +4,7 @@ enum I18nKey {
 	archive = "archive",
 	search = "search",
 	changelog = "changelog",
+	friends = "friends",
 
 	tags = "tags",
 	categories = "categories",
@@ -14,6 +15,7 @@ enum I18nKey {
 	untitled = "untitled",
 	uncategorized = "uncategorized",
 	noTags = "noTags",
+	noFriends = "noFriends",
 
 	wordCount = "wordCount",
 	wordsCount = "wordsCount",

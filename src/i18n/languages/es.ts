@@ -7,6 +7,7 @@ export const es: Translation = {
 	[Key.archive]: "Archivo",
 	[Key.search]: "Buscar",
 	[Key.changelog]: "Registro de cambios",
+	[Key.friends]: "Amigos",
 
 	[Key.tags]: "Etiquetas",
 	[Key.categories]: "Categorías",
@@ -17,6 +18,7 @@ export const es: Translation = {
 	[Key.untitled]: "Sin título",
 	[Key.uncategorized]: "Sin categoría",
 	[Key.noTags]: "Sin etiquetas",
+	[Key.noFriends]: "Sin amigos",
 
 	[Key.wordCount]: "palabra",
 	[Key.wordsCount]: "palabras",

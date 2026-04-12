@@ -7,6 +7,7 @@ export const vi: Translation = {
 	[Key.archive]: "Kho bài",
 	[Key.search]: "Tìm kiếm",
 	[Key.changelog]: "Nhật ký thay đổi",
+	[Key.friends]: "Bạn bè",
 
 	[Key.tags]: "Thẻ",
 	[Key.categories]: "Danh mục",
@@ -17,6 +18,7 @@ export const vi: Translation = {
 	[Key.untitled]: "Không tiêu đề",
 	[Key.uncategorized]: "Chưa phân loại",
 	[Key.noTags]: "Chưa có thẻ",
+	[Key.noFriends]: "Chưa có bạn bè",
 
 	[Key.wordCount]: "từ",
 	[Key.wordsCount]: "từ",

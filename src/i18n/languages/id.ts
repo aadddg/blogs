@@ -7,6 +7,7 @@ export const id: Translation = {
 	[Key.archive]: "Arsip",
 	[Key.search]: "Cari",
 	[Key.changelog]: "Log Perubahan",
+	[Key.friends]: "Teman",
 
 	[Key.tags]: "Tag",
 	[Key.categories]: "Kategori",
@@ -17,6 +18,7 @@ export const id: Translation = {
 	[Key.untitled]: "Tanpa Judul",
 	[Key.uncategorized]: "Tanpa Kategori",
 	[Key.noTags]: "Tanpa Tag",
+	[Key.noFriends]: "Tidak Ada Teman",
 
 	[Key.wordCount]: "kata",
 	[Key.wordsCount]: "kata",

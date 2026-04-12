@@ -7,6 +7,7 @@ export const en: Translation = {
 	[Key.archive]: "Archive",
 	[Key.search]: "Search",
 	[Key.changelog]: "Changelog",
+	[Key.friends]: "Friends",
 
 	[Key.tags]: "Tags",
 	[Key.categories]: "Categories",
@@ -17,6 +18,7 @@ export const en: Translation = {
 	[Key.untitled]: "Untitled",
 	[Key.uncategorized]: "Uncategorized",
 	[Key.noTags]: "No Tags",
+	[Key.noFriends]: "No Friends",
 
 	[Key.wordCount]: "word",
 	[Key.wordsCount]: "words",

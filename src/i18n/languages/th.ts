@@ -7,6 +7,7 @@ export const th: Translation = {
 	[Key.archive]: "คลัง",
 	[Key.search]: "ค้นหา",
 	[Key.changelog]: "บันทึกการเปลี่ยนแปลง",
+	[Key.friends]: "เพื่อน",
 
 	[Key.tags]: "ป้ายกำกับ",
 	[Key.categories]: "หมวดหมู่",
@@ -17,6 +18,7 @@ export const th: Translation = {
 	[Key.untitled]: "ไม่ได้ตั้งชื่อ",
 	[Key.uncategorized]: "ไม่ได้จัดหมวดหมู่",
 	[Key.noTags]: "ไม่มีป้ายกำกับ",
+	[Key.noFriends]: "ไม่มีเพื่อน",
 
 	[Key.wordCount]: "คำ",
 	[Key.wordsCount]: "คำ",

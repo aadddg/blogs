@@ -7,6 +7,7 @@ export const ja: Translation = {
 	[Key.archive]: "Archive",
 	[Key.search]: "検索",
 	[Key.changelog]: "更新履歴",
+	[Key.friends]: "友達リンク",
 
 	[Key.tags]: "タグ",
 	[Key.categories]: "カテゴリ",
@@ -17,6 +18,7 @@ export const ja: Translation = {
 	[Key.untitled]: "タイトルなし",
 	[Key.uncategorized]: "カテゴリなし",
 	[Key.noTags]: "タグなし",
+	[Key.noFriends]: "友達リンクなし",
 
 	[Key.wordCount]: "文字",
 	[Key.wordsCount]: "文字",
