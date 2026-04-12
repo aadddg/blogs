@@ -49,8 +49,6 @@ if (!lang) {
 	lang = `${siteConfig.lang}`;
 }
 const siteLang = lang.replace("_", "-");
-
-
 ---
 
 <!DOCTYPE html>
@@ -120,6 +118,9 @@ const siteLang = lang.replace("_", "-");
 
 
 		<slot name="head"></slot>
+
+		<!-- Umami Analytics -->
+		<script defer src="https://u.dyzzyduq.ink/script.js" data-website-id="72adf6ad-9745-4098-b0c1-833a979a7080" data-swup-ignore-script></script>
 
 		<link rel="alternate" type="application/rss+xml" title={profileConfig.name} href={`${Astro.site}rss.xml`}/>
 

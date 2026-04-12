@@ -220,19 +220,7 @@ function formatDate(dateStr: string): string {
 }
 </script>
 
-<div class="card-base px-6 py-8">
-	<div class="flex items-center justify-between mb-8">
-		<div>
-			<h1 class="text-2xl font-bold text-90 mb-2">{i18n(I18nKey.changelog)}</h1>
-			<p class="text-sm text-50">记录网站的每一次更新与改进</p>
-		</div>
-		<div class="hidden sm:flex items-center gap-2">
-			<span class="px-3 py-1.5 rounded-lg text-xs bg-[var(--card-bg)] border border-[oklch(0.65_0.15_var(--hue))] text-[oklch(0.65_0.15_var(--hue))]">新功能</span>
-			<span class="px-3 py-1.5 rounded-lg text-xs bg-[var(--card-bg)] border border-[oklch(0.55_0.08_var(--hue))] text-[oklch(0.55_0.08_var(--hue))]">修复</span>
-			<span class="px-3 py-1.5 rounded-lg text-xs bg-[var(--card-bg)] border border-[oklch(0.70_0.12_var(--hue))] text-[oklch(0.70_0.12_var(--hue))]">优化</span>
-			<span class="px-3 py-1.5 rounded-lg text-xs bg-[var(--card-bg)] border border-[oklch(0.60_0.18_var(--hue))] text-[oklch(0.60_0.18_var(--hue))]">重大更新</span>
-		</div>
-	</div>
+<div>
 
 	{#if loading}
 		<div class="flex flex-col items-center justify-center py-16">
@@ -280,7 +268,4 @@ function formatDate(dateStr: string): string {
 		</div>
 	{/if}
 
-	<div class="mt-10 pt-6 border-t border-[var(--line-color)] text-center">
-		<p class="text-xs text-30">持续更新中... 感谢你的关注与支持</p>
-	</div>
 </div>

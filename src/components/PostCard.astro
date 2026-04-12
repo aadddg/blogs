@@ -7,6 +7,7 @@ import { i18n } from "../i18n/translation";
 import { getDir } from "../utils/url-utils";
 import ImageWrapper from "./misc/ImageWrapper.astro";
 import PostMetadata from "./PostMeta.astro";
+import UmamiStats from "./UmamiStats.svelte";
 
 interface Props {
 	class?: string;
@@ -47,14 +48,6 @@ const { remarkPluginFrontmatter } = await entry.render();
 
 <div class:list={["card-base flex flex-col-reverse md:flex-col w-full rounded-[var(--radius-large)] overflow-hidden relative", className]} style={style}>
     <div class:list={["pl-6 md:pl-9 pr-6 md:pr-2 pt-6 md:pt-7 pb-6 relative", {"w-full md:w-[calc(100%_-_52px_-_12px)]": !hasCover, "w-full md:w-[calc(100%_-_var(--coverWidth)_-_12px)]": hasCover}]}>
-        <!-- 置顶标记 -->
-        {pinned && (
-            <div class="absolute top-4 right-4 md:top-5 md:right-auto md:left-[18px] flex items-center gap-1 text-[var(--primary)] text-xs font-medium">
-                <Icon name="material-symbols:push-pin" class="text-base" />
-                <span class="hidden md:inline">{i18n(I18nKey.pinned)}</span>
-            </div>
-        )}
-        
         <a href={url}
            class="transition group w-full block font-bold mb-3 text-3xl text-90
         hover:text-[var(--primary)] dark:hover:text-[var(--primary)]
@@ -63,6 +56,13 @@ const { remarkPluginFrontmatter } = await entry.render();
         before:absolute before:top-[35px] before:left-[18px] before:hidden md:before:block
         ">
             {title}
+            <!-- 置顶标记 -->
+            {pinned && (
+                <span class="inline-flex items-center gap-1 px-2 py-0.5 ml-2 rounded-md bg-black/5 dark:bg-white/10 text-[var(--primary)] text-xs font-medium align-middle -translate-y-1">
+                    <Icon name="material-symbols:push-pin" class="text-xs" />
+                    <span class="hidden md:inline">{i18n(I18nKey.pinned)}</span>
+                </span>
+            )}
             <Icon class="inline text-[2rem] text-[var(--primary)] md:hidden translate-y-0.5 absolute" name="material-symbols:chevron-right-rounded" ></Icon>
             <Icon class="text-[var(--primary)] text-[2rem] transition hidden md:inline absolute translate-y-0.5 opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0" name="material-symbols:chevron-right-rounded"></Icon>
         </a>
@@ -75,14 +75,22 @@ const { remarkPluginFrontmatter } = await entry.render();
             { description || remarkPluginFrontmatter.excerpt }
         </div>
 
-        <!-- word count and read time  -->
-        <div class="text-sm text-black/30 dark:text-white/30 flex gap-4 transition">
-            <div>
-                {remarkPluginFrontmatter.words} {" " + i18n(remarkPluginFrontmatter.words === 1 ? I18nKey.wordCount : I18nKey.wordsCount)}
+        <!-- word count, read time and umami stats -->
+        <div class="text-sm text-black/30 dark:text-white/30 flex gap-4 transition items-center">
+            <div class="flex flex-row items-center">
+                <div class="transition h-6 w-6 rounded-md bg-black/5 dark:bg-white/10 text-black/50 dark:text-white/50 flex items-center justify-center mr-2">
+                    <Icon name="material-symbols:notes-rounded"></Icon>
+                </div>
+                <span>{remarkPluginFrontmatter.words} {" " + i18n(remarkPluginFrontmatter.words === 1 ? I18nKey.wordCount : I18nKey.wordsCount)}</span>
             </div>
-            <div>|</div>
-            <div>
-                {remarkPluginFrontmatter.minutes} {" " + i18n(remarkPluginFrontmatter.minutes === 1 ? I18nKey.minuteCount : I18nKey.minutesCount)}
+            <div class="flex flex-row items-center">
+                <div class="transition h-6 w-6 rounded-md bg-black/5 dark:bg-white/10 text-black/50 dark:text-white/50 flex items-center justify-center mr-2">
+                    <Icon name="material-symbols:schedule-outline-rounded"></Icon>
+                </div>
+                <span>{remarkPluginFrontmatter.minutes} {" " + i18n(remarkPluginFrontmatter.minutes === 1 ? I18nKey.minuteCount : I18nKey.minutesCount)}</span>
+            </div>
+            <div class="flex flex-row items-center">
+                <UmamiStats path={`/posts/${entry.slug}/`} client:only="svelte" />
             </div>
         </div>
 

@@ -1,10 +1,19 @@
 ---
 import ChangelogPanel from "@components/ChangelogPanel.svelte";
+import UmamiStats from "@components/UmamiStats.svelte";
 import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
 import MainGridLayout from "@layouts/MainGridLayout.astro";
 ---
 
 <MainGridLayout title={i18n(I18nKey.changelog)}>
-	<ChangelogPanel client:load />
+	<div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-32">
+		<div class="card-base z-10 px-6 py-8 relative w-full">
+			<div class="flex items-center justify-between mb-6">
+				<h1 class="text-2xl font-bold text-90">{i18n(I18nKey.changelog)}</h1>
+				<UmamiStats path="/changelog/" client:only="svelte" />
+			</div>
+			<ChangelogPanel client:load />
+		</div>
+	</div>
 </MainGridLayout>
