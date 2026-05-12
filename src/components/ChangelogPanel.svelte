@@ -250,15 +250,15 @@ function formatDate(dateStr: string): string {
 					</div>
 
 					<div class="flex-1 min-w-0">
-						<div class="group bg-[var(--btn-regular-bg)] hover:bg-[var(--btn-plain-bg-hover)] rounded-xl p-4 sm:p-5 transition-all duration-300 border border-transparent hover:border-[var(--primary)]">
+						<div class="group bg-[var(--btn-regular-bg)] hover:bg-[var(--btn-plain-bg-hover)] rounded-[10px] p-4 sm:p-5 transition-all duration-300 border border-transparent hover:border-[var(--primary)]">
 							<div class="flex flex-wrap items-center gap-2 mb-3">
 								<span class="text-base sm:text-lg font-bold text-[var(--primary)]">{entry.version}</span>
-								<span class="px-2.5 py-1 rounded-lg text-xs bg-[var(--card-bg)] {getTypeBorderColor(entry.type)} {getTypeTextColor(entry.type)}">{getTypeLabel(entry.type)}</span>
+								<span class="px-2.5 py-1 rounded-[10px] text-xs bg-[var(--card-bg)] {getTypeBorderColor(entry.type)} {getTypeTextColor(entry.type)}">{getTypeLabel(entry.type)}</span>
 							</div>
 
 							<div class="flex flex-wrap gap-2">
 								{#each entry.changes as change}
-									<div class="px-3 py-1.5 bg-[var(--card-bg)] rounded-lg text-sm text-75 border border-[var(--line-color)] hover:border-[var(--primary)] transition-colors">{change}</div>
+									<div class="px-3 py-1.5 bg-[var(--card-bg)] rounded-[10px] text-sm text-75 border border-[var(--line-color)] hover:border-[var(--primary)] transition-colors">{change}</div>
 								{/each}
 							</div>
 						</div>

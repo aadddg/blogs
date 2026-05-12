@@ -286,7 +286,7 @@ function getCoverUrl(index: number, originalUrl: string): string {
 						<div class="flex flex-col">
 							<!-- 歌曲信息 -->
 							<div class="flex items-center gap-3 mb-3">
-								<div class="relative w-14 h-14 rounded-lg overflow-hidden flex-shrink-0 bg-black/20">
+								<div class="relative w-14 h-14 rounded-[10px] overflow-hidden flex-shrink-0 bg-black/20">
 									<img
 										src={getCoverUrl(currentIndex, currentSong.cover)}
 										alt={currentSong.title}
@@ -317,7 +317,7 @@ function getCoverUrl(index: number, originalUrl: string): string {
 								</div>
 
 								<button
-									class="btn-plain scale-animation rounded-lg w-8 h-8 flex-shrink-0"
+									class="btn-plain scale-animation rounded-[10px] w-8 h-8 flex-shrink-0"
 									onclick={(e) => { e.stopPropagation(); toggleExpand(); }}
 									aria-label="关闭"
 								>
@@ -402,7 +402,7 @@ function getCoverUrl(index: number, originalUrl: string): string {
 						<div class="flex flex-col">
 							<div class="flex items-center gap-3 mb-4">
 								<button
-									class="btn-plain scale-animation rounded-lg w-8 h-8 flex-shrink-0"
+									class="btn-plain scale-animation rounded-[10px] w-8 h-8 flex-shrink-0"
 									onclick={(e) => { e.stopPropagation(); backToMain(); }}
 									aria-label="返回"
 								>
@@ -455,7 +455,7 @@ function getCoverUrl(index: number, originalUrl: string): string {
 						<div class="flex flex-col">
 							<div class="flex items-center gap-3 mb-3">
 								<button
-									class="btn-plain scale-animation rounded-lg w-8 h-8 flex-shrink-0"
+									class="btn-plain scale-animation rounded-[10px] w-8 h-8 flex-shrink-0"
 									onclick={(e) => { e.stopPropagation(); backToMain(); }}
 									aria-label="返回"
 								>
@@ -468,7 +468,7 @@ function getCoverUrl(index: number, originalUrl: string): string {
 							<div class="overflow-y-auto max-h-36 hide-scrollbar">
 								{#each playlist as song, index}
 									<button
-										class="w-full flex items-center gap-3 p-2 rounded-lg transition hover:bg-[var(--btn-plain-bg-hover)]"
+										class="w-full flex items-center gap-3 p-2 rounded-[10px] transition hover:bg-[var(--btn-plain-bg-hover)]"
 										class:bg-[var(--btn-regular-bg)]={index === currentIndex}
 										onclick={(e) => { e.stopPropagation(); playSong(index); }}
 									>
@@ -525,17 +525,21 @@ function getCoverUrl(index: number, originalUrl: string): string {
 	.music-player-container {
 		width: 56px;
 		height: 56px;
-		border-radius: 28px;
+		border-radius: 10px;
 		transition: all 0.4s cubic-bezier(0.25, 0, 0.5, 0);
-		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
 		transform-origin: top left;
+	}
+
+	:global(.dark) .music-player-container {
+		box-shadow: 0 4px 24px rgba(0, 0, 0, 0.40);
 	}
 
 	.music-player-container.expanded {
 		width: 280px;
 		height: auto;
 		min-height: 200px;
-		border-radius: 16px;
+		border-radius: 10px;
 		cursor: default;
 		/* 向左上移动，transform-origin 是 top left，所以是从左上角展开 */
 		transform: translate(-224px, -124px);
@@ -550,11 +554,11 @@ function getCoverUrl(index: number, originalUrl: string): string {
 		-webkit-backdrop-filter: blur(12px);
 		border-radius: inherit;
 		transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-		border: 1px solid rgba(255, 255, 255, 0.1);
+		border: 1px solid rgba(0, 0, 0, 0.06);
 	}
 
 	:global(.dark) .player-bg {
-		border: 1px solid rgba(255, 255, 255, 0.05);
+		border: 1px solid rgba(255, 255, 255, 0.06);
 	}
 
 	.player-content {
@@ -605,7 +609,7 @@ function getCoverUrl(index: number, originalUrl: string): string {
 
 	:global(.btn-plain) {
 		@apply transition relative flex items-center justify-center bg-none
-		text-black/75 hover:text-[var(--primary)] dark:text-white/75 dark:hover:text-[var(--primary)];
+		text-black/80 hover:text-[var(--primary)] dark:text-white/85 dark:hover:text-[var(--primary)];
 	}
 
 	:global(.btn-plain)::before {
@@ -636,7 +640,7 @@ function getCoverUrl(index: number, originalUrl: string): string {
 	}
 
 	:global(.dark .btn-regular) {
-		color: rgba(255, 255, 255, 0.75);
+		color: rgba(255, 255, 255, 0.80);
 	}
 
 	:global(.scale-animation) {
