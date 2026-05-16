@@ -13,11 +13,11 @@ rainbow-dark = linear-gradient(to right, oklch(0.70 0.10 0), oklch(0.70 0.10 30)
   --content-delay 150ms
 
 /* ============================================
-   Deep Black Theme Color System
+   SvelteKit Inspired Theme Color System
    ============================================
-   Light mode: Warm white / Off-white backgrounds
-   Dark mode: Deep black with subtle warm undertones
-   Primary: Preserved oklch hue system
+   Light mode: Clean white backgrounds
+   Dark mode: True deep black (#0f0f0f / #1a1a1a)
+   Primary: Orange-red accent like SvelteKit
    ============================================ */
 
 /* An util to define variables that vary with light and dark mode */
@@ -31,28 +31,28 @@ define(vars)
         {key}: value[1]
 
 define({
-  /* Primary accent - preserved oklch hue system */
+  /* Primary accent - uses dynamic hue */
   --primary: oklch(0.55 0.16 var(--hue)) oklch(0.70 0.16 var(--hue))
 
-  /* Background layers - Light: warm white, Dark: deep black */
-  --page-bg: oklch(0.97 0.005 var(--hue)) oklch(0.08 0.008 var(--hue))
-  --card-bg: oklch(0.98 0.003 var(--hue)) oklch(0.12 0.01 var(--hue))
+  /* Background layers - Light: clean white, Dark: deep black */
+  --page-bg: #ffffff oklch(0.06 0.005 var(--hue))
+  --card-bg: #fafafa oklch(0.10 0.008 var(--hue))
 
   /* Button content color */
-  --btn-content: oklch(0.45 0.14 var(--hue)) oklch(0.75 0.12 var(--hue))
+  --btn-content: oklch(0.45 0.14 var(--hue)) oklch(0.80 0.10 var(--hue))
 
   /* Regular button backgrounds */
-  --btn-regular-bg: oklch(0.94 0.015 var(--hue)) oklch(0.18 0.02 var(--hue))
-  --btn-regular-bg-hover: oklch(0.90 0.03 var(--hue)) oklch(0.22 0.025 var(--hue))
-  --btn-regular-bg-active: oklch(0.86 0.05 var(--hue)) oklch(0.26 0.03 var(--hue))
+  --btn-regular-bg: oklch(0.94 0.015 var(--hue)) oklch(0.16 0.015 var(--hue))
+  --btn-regular-bg-hover: oklch(0.90 0.03 var(--hue)) oklch(0.20 0.02 var(--hue))
+  --btn-regular-bg-active: oklch(0.86 0.05 var(--hue)) oklch(0.24 0.025 var(--hue))
 
   /* Plain button backgrounds */
-  --btn-plain-bg-hover: oklch(0.94 0.015 var(--hue)) oklch(0.20 0.02 var(--hue))
-  --btn-plain-bg-active: oklch(0.98 0.005 var(--hue)) oklch(0.16 0.015 var(--hue))
+  --btn-plain-bg-hover: oklch(0.94 0.015 var(--hue)) oklch(0.18 0.018 var(--hue))
+  --btn-plain-bg-active: oklch(0.98 0.005 var(--hue)) oklch(0.14 0.012 var(--hue))
 
   /* Card button backgrounds */
-  --btn-card-bg-hover: oklch(0.96 0.008 var(--hue)) oklch(0.16 0.015 var(--hue))
-  --btn-card-bg-active: oklch(0.92 0.015 var(--hue)) oklch(0.20 0.02 var(--hue))
+  --btn-card-bg-hover: oklch(0.96 0.008 var(--hue)) oklch(0.14 0.012 var(--hue))
+  --btn-card-bg-active: oklch(0.92 0.015 var(--hue)) oklch(0.18 0.018 var(--hue))
 
   /* Enter button - alias to regular */
   --enter-btn-bg: var(--btn-regular-bg)
@@ -60,47 +60,47 @@ define({
   --enter-btn-bg-active: var(--btn-regular-bg-active)
 
   /* Deep text color */
-  --deep-text: oklch(0.20 0.015 var(--hue)) oklch(0.90 0.01 var(--hue))
+  --deep-text: oklch(0.15 0.01 var(--hue)) oklch(0.92 0.008 var(--hue))
 
   /* Title active state */
-  --title-active: oklch(0.50 0.12 var(--hue)) oklch(0.85 0.08 var(--hue))
+  --title-active: oklch(0.50 0.12 var(--hue)) oklch(0.88 0.06 var(--hue))
 
   /* Dividers and lines - subtle but visible */
-  --line-divider: black(0.06) white(0.08)
-  --line-color: black(0.08) white(0.10)
-  --meta-divider: black(0.15) white(0.20)
+  --line-divider: black(0.08) white(0.06)
+  --line-color: black(0.10) white(0.08)
+  --meta-divider: black(0.18) white(0.15)
 
   /* Inline code */
   --inline-code-bg: var(--btn-regular-bg)
   --inline-code-color: var(--btn-content)
 
   /* Selection */
-  --selection-bg: oklch(0.85 0.06 var(--hue)) oklch(0.35 0.08 var(--hue))
+  --selection-bg: oklch(0.85 0.06 var(--hue)) oklch(0.30 0.06 var(--hue))
   --codeblock-selection: oklch(0.40 0.08 var(--hue))
 
-  /* Code blocks */
-  --codeblock-bg: oklch(0.15 0.01 var(--hue)) oklch(0.10 0.008 var(--hue))
-  --codeblock-topbar-bg: oklch(0.25 0.015 var(--hue)) oklch(0.08 0.006 var(--hue))
+  /* Code blocks - darker for SvelteKit feel */
+  --codeblock-bg: oklch(0.12 0.008 var(--hue)) oklch(0.08 0.006 var(--hue))
+  --codeblock-topbar-bg: oklch(0.20 0.012 var(--hue)) oklch(0.06 0.004 var(--hue))
 
   /* License block */
-  --license-block-bg: black(0.02) var(--codeblock-bg)
+  --license-block-bg: black(0.03) var(--codeblock-bg)
 
   /* Links */
-  --link-underline: oklch(0.90 0.03 var(--hue)) oklch(0.35 0.06 var(--hue))
-  --link-hover: oklch(0.92 0.02 var(--hue)) oklch(0.40 0.07 var(--hue))
-  --link-active: oklch(0.88 0.04 var(--hue)) oklch(0.32 0.06 var(--hue))
+  --link-underline: oklch(0.90 0.03 var(--hue)) oklch(0.30 0.05 var(--hue))
+  --link-hover: oklch(0.92 0.02 var(--hue)) oklch(0.35 0.06 var(--hue))
+  --link-active: oklch(0.88 0.04 var(--hue)) oklch(0.28 0.05 var(--hue))
 
   /* Float panels */
-  --float-panel-bg: oklch(0.98 0.003 var(--hue)) oklch(0.10 0.008 var(--hue))
+  --float-panel-bg: #f5f5f5 oklch(0.08 0.006 var(--hue))
 
   /* Scrollbar colors */
   --scrollbar-bg-light: black(0.35)
   --scrollbar-bg-hover-light: black(0.45)
   --scrollbar-bg-active-light: black(0.55)
 
-  --scrollbar-bg-dark: white(0.30)
-  --scrollbar-bg-hover-dark: white(0.40)
-  --scrollbar-bg-active-dark: white(0.50)
+  --scrollbar-bg-dark: white(0.25)
+  --scrollbar-bg-hover-dark: white(0.35)
+  --scrollbar-bg-active-dark: white(0.45)
 
   --scrollbar-bg: var(--scrollbar-bg-light) var(--scrollbar-bg-dark)
   --scrollbar-bg-hover: var(--scrollbar-bg-hover-light) var(--scrollbar-bg-hover-dark)
@@ -113,17 +113,17 @@ define({
   --display-light-icon: 1 0
   --display-dark-icon: 0 1
 
-  /* Admonitions - preserved oklch */
-  --admonitions-color-tip: oklch(0.65 0.14 180) oklch(0.70 0.14 180)
-  --admonitions-color-note: oklch(0.65 0.14 250) oklch(0.70 0.14 250)
-  --admonitions-color-important: oklch(0.65 0.14 310) oklch(0.70 0.14 310)
-  --admonitions-color-warning: oklch(0.65 0.14 60) oklch(0.70 0.14 60)
-  --admonitions-color-caution: oklch(0.55 0.18 25) oklch(0.60 0.18 25)
+  /* Admonitions - SvelteKit inspired */
+  --admonitions-color-tip: oklch(0.60 0.14 180) oklch(0.65 0.14 180)
+  --admonitions-color-note: oklch(0.60 0.14 250) oklch(0.65 0.14 250)
+  --admonitions-color-important: oklch(0.60 0.14 310) oklch(0.65 0.14 310)
+  --admonitions-color-warning: oklch(0.60 0.14 60) oklch(0.65 0.14 60)
+  --admonitions-color-caution: oklch(0.50 0.18 25) oklch(0.55 0.18 25)
 
   /* TOC */
   --toc-badge-bg: oklch(0.92 0.03 var(--hue)) var(--btn-regular-bg)
-  --toc-btn-hover: oklch(0.94 0.01 var(--hue)) oklch(0.16 0.015 var(--hue))
-  --toc-btn-active: oklch(0.90 0.015 var(--hue)) oklch(0.20 0.02 var(--hue))
+  --toc-btn-hover: oklch(0.94 0.01 var(--hue)) oklch(0.14 0.012 var(--hue))
+  --toc-btn-active: oklch(0.90 0.015 var(--hue)) oklch(0.18 0.018 var(--hue))
   --toc-width: calc((100vw - var(--page-width)) / 2 - 1rem)
-  --toc-item-active: oklch(0.60 0.14 var(--hue)) oklch(0.75 0.10 var(--hue))
+  --toc-item-active: oklch(0.60 0.14 var(--hue)) oklch(0.72 0.10 var(--hue))
 })
